@@ -23,6 +23,7 @@ Connection();
         <link rel="stylesheet" href="styly/bootstrap-grid.css" type="text/css"/>
         <link rel="stylesheet" href="styly/bootstrap-reboot.css" type="text/css"/>
         <link rel="stylesheet" href="styly/bootstrap-utilities.css" type="text/css"/>
+        <link rel="icon" type="image/x-icon" href="obrazky/faviPM.ico">
         <title><?php echo $title; ?></title>
     </head>
     <body>
@@ -30,7 +31,7 @@ Connection();
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a href="index.php">
                     <div class="d-flex justify-content-start">
-                    <img src="obrazky/naplast.jpg" class="img-thumbnail" alt="Logo" width="45px" height="auto"></a>
+                    <img src="obrazky/logoPM.png" alt="Logo" width="120px" height="auto"></a>
                     </div>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

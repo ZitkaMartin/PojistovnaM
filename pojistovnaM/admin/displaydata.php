@@ -1,11 +1,13 @@
 <?php
 session_start();
-include "connect.php";
+require "connect.php";
+require '../tridy/Admin.php';
 if (empty($_SESSION['email'])) {
     header("location:login.php");
 }
 $email = $_SESSION['email'];
 $heslo = $_SESSION['heslo'];
+$admin = new Admin();
 ?>
 <!DOCTYPE html>
 <html>
@@ -58,9 +60,7 @@ $heslo = $_SESSION['heslo'];
                                 ?></td>
                             <td>
                                 <button type="button"  class="btn btn-success"><a  style="color: white;" href="edit.php?id=<?php echo $rows['id']; ?>">Upravit</a> </button>
-                                <button type="button"  class="btn btn-primary">
-                                    <a  style="color: white;" href="delete.php?id=<?php echo $rows['id']; ?>">Odstranit</a></button>
-
+                                    <?php $admin->VypisOdstranit(); ?>
                             </td>
                         </tr>
                         <?php

@@ -45,7 +45,6 @@ if (isset($_POST['submit'])) {
                         <input type="email" name="email" id="san3" class="form-control mb-3" placeholder="Přihlašovací email">
                         <input type="Password" name="heslo" id="san5" class="form-control mb-3" placeholder="heslo">
                         <input type="submit" name="submit" id="sand" class="btn btn-success" value="Přihlásit">
-
                     </form>
                 </div>
             </div>

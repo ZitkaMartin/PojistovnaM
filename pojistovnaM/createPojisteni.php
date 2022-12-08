@@ -1,6 +1,6 @@
 <?php
 $title = "Vytvořit pojištění";
-require_once 'header.php';
+require_once './header.php';
 
 $admin = new Admin();
 $admin->OmezPristup();

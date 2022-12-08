@@ -28,5 +28,17 @@ class Admin {
     </div>');
         }
     }
+    
+    public function VypisOdstranit() {
+        if ($_SESSION['admin'] == true) {
+           echo '<button type = "button" class = "btn btn-secondary">
+                                    <a style = "color: white;" href = "delete.php?id=<?php echo $rows["id"]; ?>">Odstranit</a></button>';
+        }
+    }
+    
+    public function Presmeruj() {
+                    header("location:../index.php");
+
+    }
 
 }

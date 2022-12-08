@@ -1,12 +1,14 @@
 <?php
 session_start();
-include "connect.php";
+require "connect.php";
+require '../tridy/Admin.php';
 if (empty($_SESSION['email'])) {
     header("location:login.php");
 }
 $email = $_SESSION['email'];
 $heslo = $_SESSION['heslo'];
-$admin = $_SESSION['admin'];
+$admin = new Admin();
+$admin->Presmeruj();
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,10 +62,8 @@ $admin = $_SESSION['admin'];
                             </td>
                             <td>
                                 <button type="button"  class="btn btn-success"><a  style="color: white;" href="edit.php?id=<?php echo $rows['id']; ?>">Upravit</a> </button>
-                                <button type="button"  class="btn btn-primary">
-                                    <a  style="color: white;" href="delete.php?id=<?php echo $rows['id']; ?>">Odstranit</a></button>         
-                            </td>
-
+                                <button type = "button" class = "btn btn-secondary">
+                                    <a style = "color: white;" href = "delete.php?id=<?php echo $rows["id"]; ?>">Odstranit</a></button>
                         </tr>
 
                         <?php
