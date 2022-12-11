@@ -10,8 +10,9 @@ function nactiTridu(string $trida): void {
 
 spl_autoload_register("nactiTridu");
 require './admin/connect.php';
-require("mysql/db.php");
-Connection();
+
+$db = new Db();
+$db ->Connection();
 ?>
 
 <!DOCTYPE html>
@@ -79,9 +80,8 @@ Connection();
                                 <a class="nav-link dropdown-toggle alert-secondary" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"">
                                     Přihlášený uživatel <?= $_SESSION['email']; ?>
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="admin/displaydata.php">Detail účtu</a>
-                                    <a class="dropdown-item" href="admin/Dashboard.php">Upravit údaje</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">                                   
+                                    <a class="dropdown-item" href="admin/Dashboard.php">Můj účet</a>
                                     <a class="dropdown-item" href="admin/logout.php">Odhlásit se</a>                                   
                             </li>
                         </ul>

@@ -16,7 +16,12 @@ if (isset($_POST['submit'])) {
             echo '<span style="color:red">' . "Tento email je již zaregistrován" . '</span>';
         } else {
             if ($heslo == $heslo1) {
-                $heslo = md5($heslo);
+
+                $hash = "$2y$10$";
+                $salt = "A8kdD56kK423sIOFA46313";
+                $hashSalt = $hash . $salt;
+                $heslo = crypt($heslo, $hashSalt);
+
                 $sql = "INSERT INTO adminTable(email,heslo) values('$email','$heslo')";
                 if (mysqli_query($conn, $sql)) {
                     header("location:login.php");

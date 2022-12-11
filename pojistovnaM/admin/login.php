@@ -4,7 +4,16 @@ include "connect.php";
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $heslo = $_POST['heslo'];
-    $heslo = md5($heslo);
+
+    $email = mysqli_real_escape_string($conn, $email);
+    $heslo = mysqli_real_escape_string($conn, $heslo);
+   
+    //blowfish
+    $hash = "$2y$10$";
+    $salt = "A8kdD56kK423sIOFA46313";
+    $hashSalt = $hash . $salt;
+    $heslo = crypt($heslo, $hashSalt);
+     
     $query = "SELECT * FROM adminTable where email='$email' and heslo='$heslo'";
     $result = mysqli_query($conn, $query);
     if ($row = mysqli_fetch_assoc($result)) {
@@ -24,6 +33,7 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Login</title>
         <style type="text/css">
             h4{

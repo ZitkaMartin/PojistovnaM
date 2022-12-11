@@ -4,34 +4,37 @@ class Pojisteni {
 
     public function PridejPojisteni() {
         global $connection;
-        $nazev = htmlspecialchars(trim($_POST["nazev"]));
-        $popis = htmlspecialchars(trim($_POST["popis"]));
+        $nazev = $_POST["nazev"];
+        $popis = $_POST["popis"];
+        
+        $nazev = mysqli_real_escape_string($connection, $nazev);
+        $popis = mysqli_real_escape_string($connection, $popis);
 
         $dbPridejPojisteni = "INSERT INTO pojisteni(nazev,popis) VALUES('$nazev','$popis')";
 
         $nazevMin = 5;
-        $nazevMax = 30;
+        $nazevMax = 50;
 
         $popisMin = 10;
         $popisMax = 2000;
 
-        if (strlen($nazev) <= $nazevMin) {
+        if (strlen($nazev) < $nazevMin) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Název musí mít alespoň $nazevMin znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role"link" href="createPojisteni.php">Upravit</a></button>');
             die();
         }
-        if (strlen($nazev) >= $nazevMax) {
+        if (strlen($nazev) > $nazevMax) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Název musí mít maximálně $nazevMax znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role"link" href="createPojisteni.php">Upravit</a></button>');
             die();
         }
 
-        if (strlen($popis) <= $popisMin) {
+        if (strlen($popis) < $popisMin) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Popis musí mít alespoň $popisMin znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role"link" href="createPojisteni.php">Upravit</a></button>');
             die();
         }
-        if (strlen($popis) >= $popisMax) {
+        if (strlen($popis) > $popisMax) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Popis musí mít maximálně $popisMax znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role"link" href="createPojisteni.php">Upravit</a></button>');
             die();
@@ -81,9 +84,12 @@ class Pojisteni {
     public function UpravPojisteni() {
         global $connection;
 
-        $nazev = htmlspecialchars(trim($_POST["nazev"]));
-        $popis = htmlspecialchars(trim($_POST["popis"]));
+        $nazev = $_POST["nazev"];
+        $popis = $_POST["popis"];
         $pojisteniId = htmlspecialchars(trim($_POST["pojisteniId"]));
+        
+        $nazev = mysqli_real_escape_string($connection, $nazev);
+        $popis = mysqli_real_escape_string($connection, $popis);
 
         $dbUpravPojisteni = "UPDATE pojisteni SET nazev='$nazev',popis='$popis' WHERE pojisteniId=$pojisteniId";
 
@@ -93,23 +99,23 @@ class Pojisteni {
         $popisMin = 10;
         $popisMax = 2000;
 
-        if (strlen($nazev) <= $nazevMin) {
+        if (strlen($nazev) < $nazevMin) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Název musí mít alespoň $nazevMin znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role="link" href="updatePojisteni.php">Upravit</a></button>');
             die();
         }
-        if (strlen($nazev) >= $nazevMax) {
+        if (strlen($nazev) > $nazevMax) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Název musí mít maximálně $nazevMax znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role="link" href="updatePojisteni.php">Upravit</a></button>');
             die();
         }
 
-        if (strlen($popis) <= $popisMin) {
+        if (strlen($popis) < $popisMin) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Popis musí mít alespoň $popisMin znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role="link" href="updatePojisteni.php">Upravit</a></button>');
             die();
         }
-        if (strlen($popis) >= $popisMax) {
+        if (strlen($popis) > $popisMax) {
             echo("<div class='alert-dismissible alert alert-warning fade show' role='alert'>Popis musí mít maximálně $popisMax znaků<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>");
             echo('<a class="btn btn-primary m-3" role="link" href="updatePojisteni.php">Upravit</a></button>');
             die();

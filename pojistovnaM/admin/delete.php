@@ -7,7 +7,7 @@
  	    $query = "DELETE FROM adminTable WHERE id = '".$_GET["id"]."'";
  	    if(mysqli_query($conn,$query))
  	    {
- 	    	 header("location:displaydata.php");
+ 	    	 header("location:DashboardAll.php");
  	    }
  	    else
  	    {

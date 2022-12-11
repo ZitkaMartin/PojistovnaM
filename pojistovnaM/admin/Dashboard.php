@@ -8,16 +8,14 @@ if (empty($_SESSION['email'])) {
 $email = $_SESSION['email'];
 $heslo = $_SESSION['heslo'];
 $admin = new Admin();
-$admin->Presmeruj();
 ?>
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <title>Display Data</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
-
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -37,7 +35,6 @@ $admin->Presmeruj();
                         <th>ID</th>
                         <th>Login (email)</th>
                         <th>Admin</th>
-                        <th>Akce</th>
                     </tr>
                 </thead>
 
@@ -58,18 +55,9 @@ $admin->Presmeruj();
                                 } else {
                                     echo "Ne";
                                 }
-                                ?>
-                            <td>
-                                <button type = "button" class = "btn btn-success"><a style = "color: white;" href = "edit.php?id=<?php echo $rows['id']; ?>">Upravit</a> </button>
-                                <button type = "button" class = "btn btn-secondary">
-                                    <a style = "color: white;" href = "delete.php?id=<?php echo $rows["id"]; ?>">Odstranit</a></button>
-                            </td>
-
-                        </tr>
-
-                        <?php
-                    }
-                    ?>
+                                $admin->VypisOdstranit();
+                            }
+                            ?>
                 </tbody>
 
 

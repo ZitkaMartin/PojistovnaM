@@ -28,17 +28,21 @@ class Admin {
     </div>');
         }
     }
-    
+
     public function VypisOdstranit() {
         if ($_SESSION['admin'] == true) {
-           echo '<button type = "button" class = "btn btn-secondary">
-                                    <a style = "color: white;" href = "delete.php?id=<?php echo $rows["id"]; ?>">Odstranit</a></button>';
+            echo '  <td>
+                        <button type = "button" class = "btn btn-success"><a style = "color: white;" href = "edit.php?id=<?php echo $rows["id"]; ?>Upravit</a> </button>
+                        <button type = "button" class = "btn btn-secondary"><a style = "color: white;" href = "delete.php?id=<?php echo $rows["id"]; ?>Odstranit</a></button>
+                    </td>
+                </tr>';
         }
     }
-    
-    public function Presmeruj() {
-                    header("location:../index.php");
 
+    public function Presmeruj() {
+        if ($_SESSION['admin'] == false) {
+            header("location:../index.php");
+        }
     }
 
 }

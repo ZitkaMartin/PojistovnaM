@@ -4,10 +4,13 @@ class Pojistenec {
 
     public function PridejPojistence() {
         global $connection;
-        $jmeno = htmlspecialchars(trim($_POST["jmeno"]));
-        $prijmeni = htmlspecialchars(trim($_POST["prijmeni"]));
-        $datumNarozeni = htmlspecialchars(trim($_POST['datumNarozeni']));
-        $telefon = htmlspecialchars(trim($_POST['telefon']));
+        $jmeno = $_POST["jmeno"];
+        $prijmeni = $_POST["prijmeni"];
+        $datumNarozeni = $_POST['datumNarozeni'];
+        $telefon = $_POST['telefon'];
+        
+        $jmeno = mysqli_real_escape_string($connection, $jmeno);
+        $prijmeni = mysqli_real_escape_string($connection, $prijmeni);
 
         $dbPridejPojistence = "INSERT INTO pojistenci(jmeno,prijmeni,datumNarozeni,telefon) VALUES('$jmeno','$prijmeni','$datumNarozeni','$telefon')";
 
@@ -35,7 +38,6 @@ class Pojistenec {
             die("Dotaz do databáze selhal" . mysqli_error());
         }
 
-
         if ($jmeno && $prijmeni && $datumNarozeni && $telefon) {
             echo "<div class='alert-dismissible alert alert-success fade show' role='alert'>Pojištěnec $jmeno $prijmeni byl uložen<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>";
             echo "<br>";
@@ -60,8 +62,8 @@ class Pojistenec {
             echo('<thead><th>ID</th><th>Jméno</th><th>Příjmení</th><th>Datum narození</th><th>Telefon</th><th colspan="2"></th></thead>');
             foreach ($vypisPojistence as $p) {
                 echo('<tr><td>' . htmlspecialchars($p['pojistenecId']));
-                echo('</td><td>' . htmlspecialchars($p['jmeno']));
-                echo('</td><td>' . htmlspecialchars($p['prijmeni']));
+                echo('</td><td>' . htmlspecialchars(trim($p['jmeno'])));
+                echo('</td><td>' . htmlspecialchars(trim($p['prijmeni'])));
                 $datum = date("d.m.Y", strtotime($p['datumNarozeni']));
                 echo('</td><td>' . htmlspecialchars($datum));
                 echo('</td><td>' . htmlspecialchars($p['telefon']));
@@ -69,7 +71,7 @@ class Pojistenec {
                 echo('</td><td><a class="btn btn-warning" role="link" href="updatePojistenci.php?pojistenecId=' . $p['pojistenecId'] . '">Upravit</a></button>');
                 echo('</td><td><a class="btn btn-danger" role="link" href="deletePojistenci.php?pojistenecId=' . $p['pojistenecId'] . '">Odstranit</a></button>');
                 echo('</td></tr>');
-            }//u tlačítek zkusit submit
+            }
             echo('</table>');
         }
     }
@@ -77,11 +79,14 @@ class Pojistenec {
     //Update pojištěnců
     public function UpravPojistence() {
         global $connection;
-        $pojistenecId = htmlspecialchars(trim($_POST["pojistenecId"]));
-        $jmeno = htmlspecialchars(trim($_POST["jmeno"]));
-        $prijmeni = htmlspecialchars(trim($_POST["prijmeni"]));
-        $datumNarozeni = htmlspecialchars(trim($_POST["datumNarozeni"]));
-        $telefon = htmlspecialchars(trim($_POST["telefon"]));
+        $pojistenecId = $_POST["pojistenecId"];
+        $jmeno = $_POST["jmeno"];
+        $prijmeni = $_POST["prijmeni"];
+        $datumNarozeni = $_POST["datumNarozeni"];
+        $telefon = $_POST["telefon"];
+        
+        $jmeno = mysqli_real_escape_string($connection, $jmeno);
+        $prijmeni = mysqli_real_escape_string($connection, $prijmeni);
 
         $dbUpravPojistence = "UPDATE pojistenci SET jmeno='$jmeno',prijmeni='$prijmeni',datumNarozeni='$datumNarozeni',telefon='$telefon' WHERE pojistenecId=$pojistenecId";
 
@@ -125,6 +130,8 @@ class Pojistenec {
 
         if ($_POST["submit"]) {
             echo "<div class='alert-dismissible alert alert-success fade show' role='alert'>Pojištěnec byl odstraněn z databáze<button type='button' class='close' data-dismiss='alert'>&times;</span></button></div>";
+            die ();
+            
         }
 
         if (!$vymazPojistence) {
@@ -179,6 +186,7 @@ class Pojistenec {
             WHERE pojistenci . pojistenecId = $pojistenecId";
 
         $vypisDetailPojistence = mysqli_query($connection, $dbVypisDetailPojistence);
+        
         if (!$vypisDetailPojistence) {
             die("Nepodařilo se vybrat data z databáze.");
         }
@@ -197,6 +205,7 @@ class Pojistenec {
             }
             echo('</table>');
         }
+        
     }
 
 }
