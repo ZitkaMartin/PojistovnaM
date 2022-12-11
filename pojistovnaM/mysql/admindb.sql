@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Ned 11. pro 2022, 17:05
+-- Vytvořeno: Ned 11. pro 2022, 17:28
 -- Verze serveru: 10.4.25-MariaDB
 -- Verze PHP: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Databáze: `admindb`
 --
+CREATE DATABASE IF NOT EXISTS `admindb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `admindb`;
 
 -- --------------------------------------------------------
 

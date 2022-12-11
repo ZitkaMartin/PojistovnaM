@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1
--- Vytvořeno: Ned 11. pro 2022, 17:05
+-- Vytvořeno: Ned 11. pro 2022, 17:26
 -- Verze serveru: 10.4.25-MariaDB
 -- Verze PHP: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Databáze: `pojistovnamartin`
 --
+CREATE DATABASE IF NOT EXISTS `pojistovnamartin` DEFAULT CHARACTER SET utf8 COLLATE utf8_czech_ci;
+USE `pojistovnamartin`;
 
 -- --------------------------------------------------------
 
@@ -115,8 +117,7 @@ INSERT INTO `pojisteni` (`pojisteniId`, `nazev`, `popis`) VALUES
 (36, 'Pojištění majetku', 'Pojištění majetku je souhrnné označení pro několik odvětví neživotního pojištění. Všechna jsou upravena v Hlavě III zákona o pojistné smlouvě „Soukromé pojištění věci a jiného majetku“. Při těchto pojištěních poskytuje pojišťovna pojistnou ochranu majetku v případě, že dojde k jeho zničení, poškození nebo odcizení.'),
 (37, 'Životní pojištění', 'Životní pojištění je taková pojistná smlouva mezi pojistníkem (klientem) a pojistitelem (pojišťovnou), ve které se pojistitel zavazuje zaplatit určenou peněžní částku pojištěné osobě v případě pracovní neschopnosti, doby nezbytného léčení úrazu, za trvalé následky úrazu, za hospitalizaci následkem úrazu, v případě invalidity 1., 2. nebo 3. stupně, závažných onemocnění a dalších připojištění nebo tuto částku zaplatit oprávněné (obmyšlené) osobě v případě úmrtí pojištěného. Pojištěný platí za tuto smlouvu v pravidelných dohodnutých intervalech pojistné.'),
 (51, 'Havarijní pojištění', 'Havarijní pojištění (často označováno pojišťovnami jako kasko). Na rozdíl od povinného ručení, tedy pojištění odpovědnosti z provozu vozidla, se jedná o dobrovolné smluvní pojištění. Základní pojištění se sjednává pro minimalizaci rizik na vozidle či jeho části pro pojistná nebezpečí typu havárie, odcizení, vandalismu či živelních události (označováno jako All Risk) nebo pouze pro ochranu některých z výše uvedených (např. pouze havárie či pouze odcizení). V pojistných podmínkách či v samotné pojistné smlouvě nalezneme případy, pro které toto pojištění platí.'),
-(55, 'Pojištění odpovědnosti z provozu vozidla', 'Pojištění odpovědnosti z provozu vozidla, též nesprávně povinné ručení, je povinné smluvní pojištění odpovědnosti, jehož základním účelem je pojistná ochrana zdraví a majetku třetích osob, kterým byla způsobena škoda zapříčiněná provozem vozidla. Podmínky sjednávání a plnění pojistné smlouvy v ČR upravuje zákon č. 168/1999 Sb., jenž mj. stanoví, že povinné ručení musí být uzavřeno pro každé vozidlo, které je provozováno na pozemní komunikaci včetně vozidel, která jsou pouze ponechána na pozemní komunikaci. Jako profesní organizaci pojistitelů, kteří jsou na území ČR oprávněni provozovat pojištění odpovědnosti z provozu vozidla, tento zákon zřizuje Českou kancelář pojistitelů.'),
-(56, 'ahoja', 'Já jsem pojištění');
+(55, 'Pojištění odpovědnosti z provozu vozidla', 'Pojištění odpovědnosti z provozu vozidla, též nesprávně povinné ručení, je povinné smluvní pojištění odpovědnosti, jehož základním účelem je pojistná ochrana zdraví a majetku třetích osob, kterým byla způsobena škoda zapříčiněná provozem vozidla. Podmínky sjednávání a plnění pojistné smlouvy v ČR upravuje zákon č. 168/1999 Sb., jenž mj. stanoví, že povinné ručení musí být uzavřeno pro každé vozidlo, které je provozováno na pozemní komunikaci včetně vozidel, která jsou pouze ponechána na pozemní komunikaci. Jako profesní organizaci pojistitelů, kteří jsou na území ČR oprávněni provozovat pojištění odpovědnosti z provozu vozidla, tento zákon zřizuje Českou kancelář pojistitelů.');
 
 --
 -- Indexy pro exportované tabulky
